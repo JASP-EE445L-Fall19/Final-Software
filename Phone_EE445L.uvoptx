@@ -170,6 +170,7 @@
   </Target>
 
   <Group>
+<<<<<<< HEAD
     <GroupName>App/src</GroupName>
     <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
@@ -208,9 +209,25 @@
   <Group>
     <GroupName>Drivers/inc</GroupName>
     <tvExp>0</tvExp>
+=======
+    <GroupName>Source Group 1</GroupName>
+    <tvExp>1</tvExp>
+>>>>>>> 5b81f7b9ce9d9d66e164efb9b639354ec00515f3
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>1</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\App\src\main.c</PathWithFileName>
+      <FilenameWithoutPath>main.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
   </Group>
 
   <Group>

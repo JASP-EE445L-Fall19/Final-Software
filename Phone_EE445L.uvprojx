@@ -380,7 +380,11 @@
       </TargetOption>
       <Groups>
         <Group>
+<<<<<<< HEAD
           <GroupName>App/src</GroupName>
+=======
+          <GroupName>Source Group 1</GroupName>
+>>>>>>> 5b81f7b9ce9d9d66e164efb9b639354ec00515f3
           <Files>
             <File>
               <FileName>main.c</FileName>
@@ -388,6 +392,7 @@
               <FilePath>.\App\src\main.c</FilePath>
             </File>
           </Files>
+<<<<<<< HEAD
         </Group>
         <Group>
           <GroupName>App/inc</GroupName>
@@ -406,6 +411,8 @@
         </Group>
         <Group>
           <GroupName>::Device</GroupName>
+=======
+>>>>>>> 5b81f7b9ce9d9d66e164efb9b639354ec00515f3
         </Group>
       </Groups>
     </Target>
@@ -413,6 +420,7 @@
 
   <RTE>
     <apis/>
+<<<<<<< HEAD
     <components>
       <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="5.2.0" condition="ARMv6_7_8-M Device">
         <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.5.1"/>
@@ -445,6 +453,10 @@
         </targetInfos>
       </file>
     </files>
+=======
+    <components/>
+    <files/>
+>>>>>>> 5b81f7b9ce9d9d66e164efb9b639354ec00515f3
   </RTE>
 
 </Project>
