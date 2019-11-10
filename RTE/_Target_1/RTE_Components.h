@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'Phone_EE445L' 
+ * Project: 'Phone_4C129' 
  * Target:  'Target 1' 
  */
 

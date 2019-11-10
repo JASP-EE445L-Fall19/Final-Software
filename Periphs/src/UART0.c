@@ -1,4 +1,4 @@
-//  UART.c
+//  UART0.c
 //      Source Code for UART drivers for Lab 11 in EE 445L
 //      General Purpose UART
 //
@@ -17,7 +17,7 @@
 
 
 
-#include "UART.h"
+#include "UART0.h"
 
 
 
