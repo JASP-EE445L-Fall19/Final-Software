@@ -1,4 +1,4 @@
-//  SPI.c
+//  SSI1.c
 //      Source Code for SPI drivers for Lab 11 in EE 445L
 //      General Purpose SPI
 //
@@ -16,26 +16,9 @@
 //
 
 
-#include "SPI.h"
+#include "SSI1.h"
 
 
-
-/**     SPI0_Init Function
- *  @brief      Initializes SPI0. Used for LCD Display
- *  @details    Pins Used:
- *                  PA2 - Sck0
- *                  PA3 - CS0/Fss0
- *                  PA4 - MOSI0
- *                  PA5 - MISO0
- *  @param[in]  freq        Speed of SPI0 
- *  @param[in]  polarity    Polarity of Clock
- *  @param[in]  phase       Phase of Clock
- * 
- */
-void SPI0_Init(int freq, int polarity, int phase) {
-
-
-}
 
 
 
@@ -52,7 +35,7 @@ void SPI0_Init(int freq, int polarity, int phase) {
  *  @param[in]  phase       Phase of Clock
  * 
  */
-void SPI1_Init(int freq, int polarity, int phase) {
+void SSI1_Init(int freq, int polarity, int phase) {
 
     
 }
