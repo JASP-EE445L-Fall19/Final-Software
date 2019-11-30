@@ -19,7 +19,8 @@
 #include "SIM800H.h"
 
 
-
+int checkForOK(char buf[], int size);
+void WaitForOK(void);
 void TerminalMenu(void);
 
 
@@ -36,13 +37,16 @@ void TerminalMenu(void);
  *  @note       Might have the baudrate as the input parameter
  *                  but the module automatically tunes baudrate when
  *                  you send first commands to it.
+ *							Based on Adafruit FONA library
  */
 void SIM800H_Init(void) {
+	char dump;
+	
 	UART2_Init(115200);
 
+	// Initialize other config pins
 	SYSCTL->RCGCGPIO |= 0x08;			// Port D
 	while ((SYSCTL->PRGPIO & 0x08) == 0) {};
-		
 	GPIOD_AHB->DIR |= 0x01;				// RST pin
 	GPIOD_AHB->DEN |= 0x01;
 	
@@ -53,29 +57,214 @@ void SIM800H_Init(void) {
 	SysTick_Wait10ms(10);		// Wait 100ms
 	GPIOD_AHB->DATA |= 0x01;
 		
-	int16_t timeout = 7000;				// 7 seconds
-	char read[5];
-	while(timeout > 0) {
-		UART2_OutString("AT");
-		UART2_InString(read, 5);
-		if(read[0] == 'O' && read[1] == 'K') {
-			break;
-		}
-		SysTick_Wait10ms(50);			// Wait half a second;
-		timeout -= 500;
-	}
-	
-	if(timeout <= 0) {
-		printf("SIM800H Timed-out.\r");
-	}
-		
-		
-	//TerminalMenu();							// Comment in or out for terminal menu
 
+	// See if SIM800H is responding correctly (timeout if not)	
+	while(Fifo_Get(&dump));	
+	UART2_OutString("AT\r");
+	SysTick_Wait10ms(5);
+	WaitForOK();
+	
+	// Display name and revision.			Never receives OK so I check the latest revision number (8)
+	while(Fifo_Get(&dump));
+	UART2_OutString("ATI\r");
+	SysTick_Wait10ms(5);
+	while(Fifo_Get(&dump)) {
+		if(dump != 0x0A)	printf("%c", dump);
+		//SysTick_Wait10ms(10);
+	}
+	dump = UART2_InChar();			// Doesn't interrupt even though OK is in UART FIFO
+	dump = UART2_InChar();			// Gotta d it manually
+	printf("OK\r");
+	while(Fifo_Get(&dump));
+
+	SIM800H_SimCardNumber();
+	
+	// Check Network
+//	UART2_OutString("AT+COPS?\r");
+//	//printf("AT+COPS?\r");
+//	SysTick_Wait10ms(10);
+//	WaitForOK();
+	
+	SIM800H_CheckSignalStrength();
+	SIM800H_CheckBattery();
+	
+	//TerminalMenu();							// Comment in or out for terminal menu	
+	
+}
+
+
+
+void SIM800H_SimCardNumber(void) {
+	// Display SIM Card ID
+	UART2_OutString("AT+CCID\r");
+	SysTick_Wait10ms(5);
+	WaitForOK();	
+	
+}
+
+
+
+
+
+void SIM800H_CheckSignalStrength(void) {
+	// Check Signal Strength (dB - Higher, better)
+	UART2_OutString("AT+CSQ\r");
+	//printf("AT+CSQ\r");
+	SysTick_Wait10ms(5);
+	WaitForOK();
+	
+}
+
+
+
+
+void SIM800H_CheckBattery(void) {
+	// Check Battery Life (second number percentage, third number battery voltage in mV);
+	UART2_OutString("AT+CBC\r");
+	//printf("AT+CBC\r");
+	SysTick_Wait10ms(5);
+	WaitForOK();
+	
+}
+
+
+//char number[10] = {'2','5','4','7','6','0','9','5','9','2'};
+void SIM800H_SendText(char phone[], char message[]) {
+	UART2_OutString("AT+CMGF=1\r");
+	SysTick_Wait10ms(5);
+	WaitForOK();
+	
+	char number[14] = {'\"','2','5','4','7','6','0','9','5','9','2','\"','\r',0};
+	UART2_OutString("AT+CMGS=");
+	UART2_OutString(phone);
+	printf("-----   AT+CMGS=%s", number);
+	SysTick_Wait10ms(50);
+	UART2_OutString("message");
+	SysTick_Wait10ms(2);
+	UART2_OutChar('\r');
+	SysTick_Wait10ms(2);
+	char ctrlZ[3] = {0x1A, '\r', 0}; 
+	UART2_OutChar(0x1A);
+	SysTick_Wait10ms(2);
+	UART2_OutChar('\r');
+	
+	WaitForOK();
 	
 	
+}
+
+
+
+
+void SIM800H_EnableBuzzer(void) {
+	UART2_OutString("AT+SPWM=0,10000,5000\r");
+	SysTick_Wait10ms(5);
+	WaitForOK();	
+	
+}
+
+
+
+void SIM800H_PickUpPhone(void) {
+	UART2_OutString("ATA\r");
+	SysTick_Wait1ms(5);
+	
+	char OChar = 0;
+	char KChar = 0;
+	char dump;
+	while((OChar != 'O' && KChar != 'K')) {
+		Fifo_Get(&dump);
+		if(dump != 0x0A) printf("%c", dump);
+		if(dump == 'O') {
+			OChar = dump;
+			Fifo_Get(&dump);
+			printf("%c", dump);
+			if(dump == 'K') {
+				KChar = dump;
+			} else {
+				OChar = 0;
+			}
+		} else if(dump == 'N') {
+			char noCarrier[10] = {'N', 'O', ' ', 'C', 'A', 'R', 'R', 'I', 'E', 'R'};
+			int noCarrierFlag = 0;
+			for(int i = 0; i < 10; i++) {
+				if(dump == noCarrier[i]) {
+					Fifo_Get(&dump);
+					noCarrierFlag = 1;
+				} else {
+					noCarrierFlag = 0;
+					break;
+				}
+			}
+			
+			if(noCarrierFlag == 1) printf("No Carrier\r");
+		}
+	}
+	printf("\r");
+	while(Fifo_Get(&dump));	
 	
 	
+}
+
+
+
+
+void SIM800H_HangUpPhone(void) {
+	UART2_OutString("ATH\r");
+	SysTick_Wait1ms(5);
+	WaitForOK();	
+	
+}
+
+
+void SIM800H_CallPhone(char number[]) {
+	UART2_OutString("ATD");
+	UART2_OutString(number);
+	UART2_OutChar(';');
+	UART2_OutChar('\r');
+	SysTick_Wait1ms(5);
+	
+	WaitForOK();	
+	
+}
+
+
+
+
+
+
+int checkForOK(char buf[], int size) {
+	for(int i = 0; i < size-1; i++) {
+		if(buf[i] == 'O' && buf[i+1] == 'K') {
+			return 1;
+		}
+	}
+	return 0;
+	
+}
+
+
+void WaitForOK(void) {
+	char OChar = 0;
+	char KChar = 0;
+	char dump;
+	while((OChar != 'O' && KChar != 'K')) {
+		Fifo_Get(&dump);
+		if(dump != 0x0A) printf("%c", dump);
+		if(dump == 'O') {
+			OChar = dump;
+			Fifo_Get(&dump);
+			printf("%c", dump);
+			if(dump == 'K') {
+				KChar = dump;
+			} else {
+				OChar = 0;
+			}
+		}
+		SysTick_Wait10ms(10);
+	}
+	printf("\r");
+	while(Fifo_Get(&dump));
 }
 
 
@@ -85,5 +274,11 @@ void TerminalMenu(void) {
 	printf("[a] read the ADC 2.8V max (FONA800 & 808)\r");
 	
 }
+
+
+
+
+
+
 
 

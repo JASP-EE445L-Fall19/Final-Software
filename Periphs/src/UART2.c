@@ -56,7 +56,19 @@ void UART2_Init(int baudrate) {
 	UART2->FBRD = (120000000 % (16 * baudrate)) * 64 + ((16*115200)/2) / (16 * baudrate);		// Write FBRD
 	UART2->LCRH = (UART2->LCRH&0xFFFFFF8F) | (0x07<<4);		// Write parameters to UARTLCRH
 	// Confgure UART clk src UARTCC - Already reset to 0 on power up
-	UART2->CTL |= 0x01;			// Enable UART by setting UARTEN in UARTCTL	
+	UART2->CTL |= 0x301;			// Enable UART by setting UARTEN in UARTCTL	
+	UART2->IM |= 0x10;		//	Arm RxRIS
+	UART2->IFLS = 0x10;		// Half full Rx trigger interurupt
+	NVIC_EnableIRQ(UART2_IRQn);
+	NVIC_SetPriority(UART2_IRQn, 1);
+	UART2->ICR = 0x0;			// Clear flag
+	
+	Fifo_Init();
+	
+	SYSCTL->RCGCGPIO |= (1<<12);
+	while ((SYSCTL->PRGPIO & (1<<12)) == 0) {};
+	GPION->DIR |= 0x2;
+	GPION->DEN |= 0x2;
 	
 }
 
@@ -129,6 +141,19 @@ void UART2_OutString(char *pt) {
 	}	
 }
 
+
+
+
+void UART2_Handler(void) {
+	static char Data;
+	while((UART2->FR & 0x10) == 0) {
+		Data = (char)(UART2->DR & 0x0FF);	// Get Data
+		Fifo_Put(Data);
+	}
+	
+	GPION->DATA ^= 0x02;
+	UART2->ICR |= 0x10;			// ACK
+}
 
 
 

@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include "UART2.h"
 #include "SysTick.h"
+#include "Fifo.h"
 
 
 
@@ -40,6 +41,37 @@
  */
 void SIM800H_Init(void);
 
+
+
+void SIM800H_SimCardNumber(void);
+
+
+
+void SIM800H_CheckSignalStrength(void);
+
+
+
+void SIM800H_CheckBattery(void);
+
+
+
+void SIM800H_SendText(char phone[], char message[]);
+
+
+
+void SIM800H_EnableBuzzer(void);
+
+
+
+void SIM800H_PickUpPhone(void);
+
+
+
+void SIM800H_HangUpPhone(void);
+
+
+
+void SIM800H_CallPhone(char number[]) ;
 
 
 
