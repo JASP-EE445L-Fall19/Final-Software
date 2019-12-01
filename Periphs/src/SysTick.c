@@ -11,7 +11,7 @@
 
 void SysTick_Init(uint32_t delay) {
 	SysTick->CTRL = 0;
-	SysTick->LOAD = 0x00FFFFFF;
+	SysTick->LOAD = delay - 1;
 	SysTick->VAL = 0;
 	SysTick->CTRL = 0x05;
 }

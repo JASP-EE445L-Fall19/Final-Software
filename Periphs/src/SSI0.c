@@ -140,7 +140,7 @@ void SSI0_Init (void) {
 	SSI0->CC &= ~SSI_CC_CS_M;
 	SSI0->CC |= SSI_CC_CS_SYSPLL;
 	SSI0->CPSR &= ~SSI_CPSR_CPSDVSR_M;                    // clear bit fields for SSI Clock Prescale Divisor
-	SSI0->CPSR += 6;                                     // 120 clock divisor, 1Mhz
+	SSI0->CPSR += 4;                                     // 120 clock divisor, 1Mhz
 	SSI0->CR0 &= ~SSI_CR0_SCR_M;                          // clear bit fields for SSI0 Serial Clock Rate, SCR = 0
 	SSI0->CR0 &= ~SSI_CR0_SPO;                            // clear bit fields for SSI0 Serial Clock Polarity, SPO = 0
 	SSI0->CR0 &= ~SSI_CR0_SPH;                            // clear bit fields for SSI0 Serial Clock Phase, SPH = 0

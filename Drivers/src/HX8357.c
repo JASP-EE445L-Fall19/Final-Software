@@ -1449,15 +1449,15 @@ void HX8357_OutString(char *ptr){
 void HX8357_SetTextColor(uint16_t color){
   StTextColor = color;
 }
-// Print a character to HX8357 LCD.
-int fputc(int ch, FILE *f){
-  HX8357_OutChar(ch);
-  return 1;
-}
-// No input from Nokia, always return data.
-int fgetc (FILE *f){
-  return 0;
-}
+//// Print a character to HX8357 LCD.
+//int fputc(int ch, FILE *f){
+//  HX8357_OutChar(ch);
+//  return 1;
+//}
+//// No input from Nokia, always return data.
+//int fgetc (FILE *f){
+//  return 0;
+//}
 // Function called when file error occurs.
 int ferror(FILE *f){
   /* Your implementation of ferror */

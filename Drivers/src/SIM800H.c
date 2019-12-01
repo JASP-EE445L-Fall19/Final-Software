@@ -155,6 +155,15 @@ void SIM800H_SendText(char phone[], char message[]) {
 
 
 
+void SIM800H_ReadText(void) {
+	
+	
+	
+}
+
+
+
+
 
 void SIM800H_EnableBuzzer(void) {
 	UART2_OutString("AT+SPWM=0,10000,5000\r");

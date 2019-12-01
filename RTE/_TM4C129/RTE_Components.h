@@ -4,7 +4,7 @@
  *      *** Do not modify ! ***
  *
  * Project: 'SmartPhone' 
- * Target:  'Target 1' 
+ * Target:  'TM4C129' 
  */
 
 #ifndef RTE_COMPONENTS_H
