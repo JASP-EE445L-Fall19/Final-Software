@@ -110,8 +110,8 @@
     <MDIClientArea>
       <RegID>0</RegID>
       <MDITabState>
-        <Len>1227</Len>
-        <Data>0100000004000000010000000100000001000000010000000000000002000000000000000100000001000000000000002800000028000000010000000E000000030000000100000020433A5C4B65696C5F76355C536D61727450686F6E655C4150495C6C76676C2E6800000000066C76676C2E6800000000C5D4F200FFFFFFFF2B433A5C4B65696C5F76355C536D61727450686F6E655C506572697068735C696E635C54696D657230412E68000000000954696D657230412E6800000000FFDC7800FFFFFFFF2B433A5C4B65696C5F76355C536D61727450686F6E655C506572697068735C7372635C54696D657230412E63000000000954696D657230412E6300000000BECEA100FFFFFFFF24433A5C4B65696C5F76355C536D61727450686F6E655C4170705C7372635C6D61696E2E6300000000066D61696E2E6300000000F0A0A100FFFFFFFF35433A5C4B65696C5F76355C536D61727450686F6E655C4150495C6C76676C5C7372635C6C765F636F72655C6C765F67726F75702E68000000000A6C765F67726F75702E6800000000BCA8E100FFFFFFFF34433A5C4B65696C5F76355C536D61727450686F6E655C4150495C6C76676C5C7372635C6C765F636F72655C6C765F646973702E6800000000096C765F646973702E68000000009CC1B600FFFFFFFF32433A5C4B65696C5F76355C536D61727450686F6E655C4150495C6C76676C5C7372635C6C765F68616C5C6C765F68616C2E6800000000086C765F68616C2E6800000000F7B88600FFFFFFFF34433A5C4B65696C5F76355C536D61727450686F6E655C4150495C6C76676C5C7372635C6C765F636F72655C6C765F726566722E6300000000096C765F726566722E6300000000D9ADC200FFFFFFFF37433A5C4B65696C5F76355C536D61727450686F6E655C4150495C6C76676C5C7372635C6C765F68616C5C6C765F68616C5F7469636B2E63000000000D6C765F68616C5F7469636B2E6300000000A5C2D700FFFFFFFF2A433A5C4B65696C5F76355C536D61727450686F6E655C447269766572735C7372635C4858383335372E6300000000084858383335372E6300000000B3A6BE00FFFFFFFF35433A5C4B65696C5F76355C536D61727450686F6E655C4150495C6C76676C5C7372635C6C765F6D6973635C6C765F636F6C6F722E68000000000A6C765F636F6C6F722E6800000000EAD6A300FFFFFFFF37433A5C4B65696C5F76355C536D61727450686F6E655C4150495C6C76676C5C7372635C6C765F68616C5C6C765F68616C5F646973702E68000000000D6C765F68616C5F646973702E6800000000F6FA7D00FFFFFFFF28433A5C4B65696C5F76355C536D61727450686F6E655C506572697068735C7372635C535349302E630000000006535349302E6300000000B5E99D00FFFFFFFF40433A5C4B65696C5F76355C536D61727450686F6E655C5254455C4465766963655C544D3443313239304E435044545C737461727475705F544D34433132392E730000000011737461727475705F544D34433132392E73000000005FC3CF00FFFFFFFF0100000010000000C5D4F200FFDC7800BECEA100F0A0A100BCA8E1009CC1B600F7B88600D9ADC200A5C2D700B3A6BE00EAD6A300F6FA7D00B5E99D005FC3CF00C1838300CACAD500010000000000000002000000E5000000660000000006000070020000</Data>
+        <Len>600</Len>
+        <Data>0100000004000000010000000100000001000000010000000000000002000000000000000100000001000000000000002800000028000000010000000600000005000000010000002F433A5C4B65696C5F76355C536D61727450686F6E655C447269766572735C7372635C546F75636853637265656E2E63000000000D546F75636853637265656E2E6300000000C5D4F200FFFFFFFF2B433A5C4B65696C5F76355C536D61727450686F6E655C506572697068735C7372635C5379735469636B2E6300000000095379735469636B2E6300000000FFDC7800FFFFFFFF2B433A5C4B65696C5F76355C536D61727450686F6E655C506572697068735C696E635C54696D657230412E68000000000954696D657230412E6800000000BECEA100FFFFFFFF2B433A5C4B65696C5F76355C536D61727450686F6E655C506572697068735C696E635C5379735469636B2E6800000000095379735469636B2E6800000000F0A0A100FFFFFFFF2B433A5C4B65696C5F76355C536D61727450686F6E655C447269766572735C696E635C53494D383030482E68000000000953494D383030482E6800000000BCA8E100FFFFFFFF2B433A5C4B65696C5F76355C536D61727450686F6E655C447269766572735C7372635C53494D383030482E63000000000953494D383030482E63000000009CC1B600FFFFFFFF0100000010000000C5D4F200FFDC7800BECEA100F0A0A100BCA8E1009CC1B600F7B88600D9ADC200A5C2D700B3A6BE00EAD6A300F6FA7D00B5E99D005FC3CF00C1838300CACAD500010000000000000002000000E5000000660000000006000070020000</Data>
       </MDITabState>
     </MDIClientArea>
     <ViewEx>
@@ -3603,129 +3603,57 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>3</ActiveTab>
+      <ActiveTab>5</ActiveTab>
       <Doc>
-        <Name>C:\Keil_v5\SmartPhone\API\lvgl.h</Name>
+        <Name>.\Drivers\src\TouchScreen.c</Name>
         <ColumnNumber>0</ColumnNumber>
-        <TopLine>7</TopLine>
-        <CurrentLine>23</CurrentLine>
+        <TopLine>199</TopLine>
+        <CurrentLine>1</CurrentLine>
+        <Folding>1</Folding>
+        <ContractedFolders></ContractedFolders>
+        <PaneID>0</PaneID>
+      </Doc>
+      <Doc>
+        <Name>.\Periphs\src\SysTick.c</Name>
+        <ColumnNumber>0</ColumnNumber>
+        <TopLine>24</TopLine>
+        <CurrentLine>25</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
         <Name>.\Periphs\inc\Timer0A.h</Name>
-        <ColumnNumber>17</ColumnNumber>
+        <ColumnNumber>3</ColumnNumber>
         <TopLine>1</TopLine>
-        <CurrentLine>10</CurrentLine>
+        <CurrentLine>18</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>.\Periphs\src\Timer0A.c</Name>
-        <ColumnNumber>10</ColumnNumber>
-        <TopLine>15</TopLine>
-        <CurrentLine>35</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>.\App\src\main.c</Name>
-        <ColumnNumber>72</ColumnNumber>
-        <TopLine>44</TopLine>
-        <CurrentLine>61</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>.\API\lvgl\src\lv_core\lv_group.h</Name>
-        <ColumnNumber>0</ColumnNumber>
+        <Name>.\Periphs\inc\SysTick.h</Name>
+        <ColumnNumber>3</ColumnNumber>
         <TopLine>10</TopLine>
-        <CurrentLine>1</CurrentLine>
+        <CurrentLine>27</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>.\API\lvgl\src\lv_core\lv_disp.h</Name>
-        <ColumnNumber>21</ColumnNumber>
-        <TopLine>1</TopLine>
-        <CurrentLine>16</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>.\API\lvgl\src\lv_hal\lv_hal.h</Name>
+        <Name>.\Drivers\inc\SIM800H.h</Name>
         <ColumnNumber>0</ColumnNumber>
-        <TopLine>1</TopLine>
-        <CurrentLine>1</CurrentLine>
+        <TopLine>36</TopLine>
+        <CurrentLine>45</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>.\API\lvgl\src\lv_core\lv_refr.c</Name>
-        <ColumnNumber>0</ColumnNumber>
-        <TopLine>1</TopLine>
-        <CurrentLine>1</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>.\API\lvgl\src\lv_hal\lv_hal_tick.c</Name>
-        <ColumnNumber>0</ColumnNumber>
-        <TopLine>43</TopLine>
-        <CurrentLine>52</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>.\Drivers\src\HX8357.c</Name>
-        <ColumnNumber>0</ColumnNumber>
-        <TopLine>712</TopLine>
-        <CurrentLine>717</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>.\API\lvgl\src\lv_misc\lv_color.h</Name>
-        <ColumnNumber>0</ColumnNumber>
-        <TopLine>218</TopLine>
-        <CurrentLine>239</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>.\API\lvgl\src\lv_hal\lv_hal_disp.h</Name>
-        <ColumnNumber>0</ColumnNumber>
-        <TopLine>73</TopLine>
-        <CurrentLine>85</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>.\Periphs\src\SSI0.c</Name>
-        <ColumnNumber>17</ColumnNumber>
-        <TopLine>126</TopLine>
-        <CurrentLine>143</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>RTE\Device\TM4C1290NCPDT\startup_TM4C129.s</Name>
-        <ColumnNumber>0</ColumnNumber>
-        <TopLine>219</TopLine>
-        <CurrentLine>224</CurrentLine>
+        <Name>.\Drivers\src\SIM800H.c</Name>
+        <ColumnNumber>3</ColumnNumber>
+        <TopLine>32</TopLine>
+        <CurrentLine>100</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>

@@ -93,7 +93,11 @@ void SIM800H_Init(void) {
 }
 
 
-
+/**     SIM800H_SimCardNumber Function
+ *  @brief      Retrieves Sim Card number of currently installed card
+ *							Displays to terminal using printf
+ *
+ */
 void SIM800H_SimCardNumber(void) {
 	// Display SIM Card ID
 	UART2_OutString("AT+CCID\r");
@@ -105,7 +109,11 @@ void SIM800H_SimCardNumber(void) {
 
 
 
-
+/**     SIM800H_CheckSignalStrength Function
+ *  @brief      Gets signal strength. First number represented in dB, greater than 5 is good
+ *							Displays to terminal using printf
+ *
+ */
 void SIM800H_CheckSignalStrength(void) {
 	// Check Signal Strength (dB - Higher, better)
 	UART2_OutString("AT+CSQ\r");
@@ -117,7 +125,11 @@ void SIM800H_CheckSignalStrength(void) {
 
 
 
-
+/**     SIM800H_CheckBattery Function
+ *  @brief      Gets battery level. Second number is percentage left, third is voltage level in mV
+ *							Displays to terminal using printf
+ *
+ */
 void SIM800H_CheckBattery(void) {
 	// Check Battery Life (second number percentage, third number battery voltage in mV);
 	UART2_OutString("AT+CBC\r");
@@ -128,7 +140,12 @@ void SIM800H_CheckBattery(void) {
 }
 
 
-//char number[10] = {'2','5','4','7','6','0','9','5','9','2'};
+/**     SIM800H_SendText Function
+ *  @brief      Sends a text to specified number
+ *							Displays to terminal using printf
+ *	@param[in]	phone[]			Null-terminated char array of phone number (total 10 digits + null)
+ *	@param[in]	message[]		Null-terminated char array of message
+ */
 void SIM800H_SendText(char phone[], char message[]) {
 	UART2_OutString("AT+CMGF=1\r");
 	SysTick_Wait10ms(5);
@@ -164,7 +181,10 @@ void SIM800H_ReadText(void) {
 
 
 
-
+/**     SIM800H_EnableBuzzer Function
+ *  @brief      Enables PWM for vibration motor. Activates when you receive notification
+ *
+ */
 void SIM800H_EnableBuzzer(void) {
 	UART2_OutString("AT+SPWM=0,10000,5000\r");
 	SysTick_Wait10ms(5);
@@ -173,7 +193,10 @@ void SIM800H_EnableBuzzer(void) {
 }
 
 
-
+/**     SIM800H_PickUpPhone Function
+ *  @brief      When received a call, uses function to pick up
+ *
+ */
 void SIM800H_PickUpPhone(void) {
 	UART2_OutString("ATA\r");
 	SysTick_Wait1ms(5);
@@ -217,7 +240,10 @@ void SIM800H_PickUpPhone(void) {
 
 
 
-
+/**     SIM800H_HangUpPhone Function
+ *  @brief      Hangs up phone while during a call
+ *
+ */
 void SIM800H_HangUpPhone(void) {
 	UART2_OutString("ATH\r");
 	SysTick_Wait1ms(5);
@@ -225,7 +251,11 @@ void SIM800H_HangUpPhone(void) {
 	
 }
 
-
+/**     SIM800H_CallPhone Function
+ *  @brief      Calls the specified phone number.
+ *	@param[in]	nummber[]			Null-terminated char array of number (10 digits + NULL);
+ *
+ */
 void SIM800H_CallPhone(char number[]) {
 	UART2_OutString("ATD");
 	UART2_OutString(number);

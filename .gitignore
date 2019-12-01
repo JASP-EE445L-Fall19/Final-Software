@@ -1,8 +1,8 @@
 # ignore
 *Phone_EE445L.uvguix.*
 *Objects
-*Listings
-*DebugConfig
-*.uvoptx
-*.uvoptx
-*.uvprojx
+#*Listings
+#*DebugConfig
+#*.uvoptx
+#*.uvoptx
+#*.uvprojx
