@@ -12,7 +12,40 @@
 #include "SIM800H.h"
 #include "Timer0A.h"
 #include ".\lvgl\lvgl.h"
+#include "PCF8523.h"
 
+#define DEBUGPRINTS 1
+#define DEBUGWAIT   16666666
+
+// delay function for testing from sysctl.c
+// which delays 3*ulCount cycles
+#ifdef __TI_COMPILER_VERSION__
+  //Code Composer Studio Code
+  void Delay(unsigned long ulCount){
+  __asm (  "    subs    r0, #1\n"
+      "    bne     Delay\n"
+      "    bx      lr\n");
+}
+
+#else
+  //Keil uVision Code
+  __asm void
+  Delay(unsigned long ulCount)
+  {
+    subs    r0, #1
+    bne     Delay
+    bx      lr
+  }
+
+#endif
+
+/* RTC Stuff */
+extern int status;
+extern int ack_ct;
+DateTime dateTime;
+int stat;
+int i = 0;
+	
 point_t point;
 
 void my_disp_flush(lv_disp_t * disp, const lv_area_t * area, lv_color_t * color_p)
@@ -32,6 +65,7 @@ int main(){
 	PLL_Init120MHz();
 
 	TouchScreen_Init();
+	PCF8523_I2C0_Init();
 	HX8357_InitD();
 	HX8357_SetCursor(0, 0);
 	HX8357_OutString("Hello there.\r\nGeneral Kenobi.");	
@@ -68,7 +102,7 @@ int main(){
   //lv_obj_set_event_cb(btnm1, event_handler);
 	
 	
-//	UART0_Init(115200);
+	UART0_Init(115200);
 //	
 //	printf("start\r");
 	SysTick_Init(0x00FFFFFF);
@@ -84,7 +118,59 @@ int main(){
 //	char str[100];
 	while(1){
 		lv_task_handler();
+		  //test display and number parser (can safely be skipped)
+	#if DEBUGPRINTS
+		i++;
+		// Send Code
+		printf("\nActive!");
+		if (i == 1) {
+			dateTime.seconds = 0x00;
+			dateTime.minutes = 0x59; 
+			dateTime.hours = 0x23;
+			dateTime.date = 0;
+			dateTime.day_int = 0;
+			dateTime.month = 0;
+			dateTime.year = 0;
 		
+			stat = setTimeAndDate(&dateTime);		// Send initial time
+			printf("Send Stat: ");
+			printf("%d", stat);
+			printf(" ");
+			printf("Ack Ct: ");
+			printf("%d", ack_ct);
+			printf("     ");
+		}
+		
+		/*int ctl = I2C_RTC_Recv(RTC_ADDR, 0x02);
+		printf("Ctl: ");
+		UART_OutUDec(ctl);
+		printf(" ");
+		*/
+		int err_code = getTimeAndDate(&dateTime);
+	
+		char sec_arr[3], min_arr[3], hr_arr[3];
+		bcd2arr(dateTime.seconds, sec_arr);
+		bcd2arr(dateTime.minutes, min_arr);
+		bcd2arr(dateTime.hours, hr_arr);
+		/* Debug Prints */
+		printf("Recv Sec: ");
+		printf("%s", sec_arr);
+		printf(" ");
+		printf("Recv Min: ");
+		printf("%s", min_arr);
+		printf(" ");
+		printf("Recv Hr: ");
+		printf("%s", hr_arr);
+		printf(" ");
+		printf("Err code: ");
+		printf("%d", err_code);
+		printf(" ");
+		printf("Ack Ct: ");
+		printf("%d", ack_ct);
+		printf("\r\n");
+		
+		Delay(DEBUGWAIT/2);
+	#endif
 		GPION->DATA |= 0x01;
 		//scanf("%s", &str[0]);
 		SysTick_Wait10ms(50);

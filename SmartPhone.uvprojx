@@ -395,21 +395,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>App/inc</GroupName>
-          <Files>
-            <File>
-              <FileName>images.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\App\inc\images.h</FilePath>
-            </File>
-            <File>
-              <FileName>Fifo.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\App\inc\Fifo.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>Drivers/src</GroupName>
           <Files>
             <File>
@@ -427,25 +412,10 @@
               <FileType>1</FileType>
               <FilePath>.\Drivers\src\SIM800H.c</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Drivers/inc</GroupName>
-          <Files>
             <File>
-              <FileName>TouchScreen.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Drivers\inc\TouchScreen.h</FilePath>
-            </File>
-            <File>
-              <FileName>HX8357.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Drivers\inc\HX8357.h</FilePath>
-            </File>
-            <File>
-              <FileName>SIM800H.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Drivers\inc\SIM800H.h</FilePath>
+              <FileName>PCF8523.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Drivers\src\PCF8523.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -491,56 +461,6 @@
               <FileName>Timer0A.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Periphs\src\Timer0A.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Periphs/inc</GroupName>
-          <Files>
-            <File>
-              <FileName>TM4C1290NCPDT.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Periphs\inc\TM4C1290NCPDT.h</FilePath>
-            </File>
-            <File>
-              <FileName>PLL.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Periphs\inc\PLL.h</FilePath>
-            </File>
-            <File>
-              <FileName>SSI0.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Periphs\inc\SSI0.h</FilePath>
-            </File>
-            <File>
-              <FileName>ADC0.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Periphs\inc\ADC0.h</FilePath>
-            </File>
-            <File>
-              <FileName>ADC1.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Periphs\inc\ADC1.h</FilePath>
-            </File>
-            <File>
-              <FileName>UART0.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Periphs\inc\UART0.h</FilePath>
-            </File>
-            <File>
-              <FileName>UART2.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Periphs\inc\UART2.h</FilePath>
-            </File>
-            <File>
-              <FileName>SysTick.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Periphs\inc\SysTick.h</FilePath>
-            </File>
-            <File>
-              <FileName>Timer0A.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Periphs\inc\Timer0A.h</FilePath>
             </File>
           </Files>
         </Group>
